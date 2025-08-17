@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input, button, div, label {
+      display: block;
+    }
+    body {
+      background-image: url("login.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content:center;
+      align-items: center;
+      flex-direction: column;
+      gap:30px;
+      height:100vh;
+    }
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 20px;
+      width: 100%;
+      height: 50px;
+    }
+    .navbar {
+      color: black;
+      width: 200px;
+      text-align: center;
+      padding-top: 10px;
+      text-decoration-line: none;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+    .navbar:hover {
+      background-color: paleturquoise;
+      text-decoration-line: none;
+      
+    }
+    .container {
+      border: 2px solid aliceblue;
+      width: 400px;
+      height: fit-content;
+      padding: 50px 0 0 120px;
+      border-radius: 20px;
+      box-shadow: -10px 10px 10px black;
+      font-weight: bold;
+    }
+    h3 {
+      font-size: 40px;
+      padding-left: 100px;
+      margin-bottom: 20px;
+    }
+    label {
+      font-size: 23px;
+      margin-bottom: 5px;
+    }
+    input {
+      font-size: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border-width: 2px;
+      border-style: solid;
+      opacity: 0.8;
+    }
+    button {
+      width: 300px;
+      padding: 16px 0 10px;
+      margin-bottom: 15px;
+      font-size: 20px;
+      background-color: palegreen;
+      border: none;
+      font-weight: bold;
+      color: black;
+      text-shadow: 1px 1px 2px black;
+    }
+    p {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .a {
+      display: block;
+      font-size: 20px;
+      padding-left: 200px;
+      color: black;
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+    a {
+      color: black;
+      text-decoration-color: black;
+      text-decoration-thickness: 1px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="flex-container">
+    <a class="navbar" href="index.html">Home</a>
+    <a class="navbar" href="webniars.html">Webinars</a>
+    <a class="navbar" href="contactus.html">Contact</a>
+    <a class="navbar" href="aboutus.html">About Us</a>
+    <a class="navbar" href="login.html">Login</a>
+    <a class="navbar" href="signup.html">Signup</a>
+  </nav>
+  <div class="container">
+    <h3>Login</h3>
+    <form>
+    <label>Email</label>
+    <input type="email" id="email" required placeholder="Email address">
+    <label>Password</label>
+    <input type="password" id="password" required placeholder="Password">
+    <p id="ans"></p>
+    <a class="a" href="forgotpass.html">Forgot Password?</a>
+    <button onclick="validate(event)">Login</button>
+    <button>Continue with Google
+    </button>
+    </form>
+    <p>Don't have an account? <a href="signup.html">Register now</a></p>
+  </div>
+  
+</body>
+<script>
+    document.getElementById("password").addEventListener("input", function() {
+  let pwd = this.value;
+  let error = document.getElementById("ans");
+  let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+
+  if (!regex.test(pwd)) {
+    error.innerHTML = `
+      <div style="color:black;font-family:Arial">
+         Password must include:
+        <ul>
+          <li>At least 8 characters</li>
+          <li>1 uppercase letter</li>
+          <li>1 lowercase letter</li>
+          <li>1 number</li>
+          <li>1 special character (@$!%*?&)</li>
+        </ul>
+      </div>
+    `;
+  } else {
+    error.innerHTML = `<div style="color:green;"> Strong password</div>`;
+  }
+});
+function validate(event)
+{
+    event.preventDefault();
+let pwd=document.getElementById("password").value;
+let email=document.getElementById("email").value;
+let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+if(!regex.test(pwd)||(email==""))
+{
+    alert("invalid credentials or fill out required form")
+}
+else{
+    alert("Login Successful");
+    window.location.href="index.html"
+}
+}
+</script>
+</html>

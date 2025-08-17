@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signup</title>
+  <style>
+    input, button, div, label { display: block; }
+
+    body {
+      display: flex;
+      background-image:url("signup.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      font-weight:bold;
+      color:black;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap:40px;
+      height:100vh;
+    }
+
+    .container {
+      border: 2px solid aliceblue;
+      width: 400px;
+      height: fit-content;
+      padding-left: 120px;
+      padding-top: 40px;
+      border-radius: 20px;
+      box-shadow: 10px 10px 10px black;
+    }
+
+    input {
+      font-size: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border-width: 8px;
+      border: 1px solid;
+      opacity: 0.8;
+    }
+
+    label { font-size: 23px; margin-bottom: 5px; }
+
+    .a {
+      display: block;
+      font-size: 20px;
+      padding-left: 200px;
+      color: black;
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+
+    button {
+      width: 300px;
+      padding-bottom: 10px;
+      text-align: center;
+      padding-top: 16px;
+      margin-bottom: 15px;
+      font-size: 20px;
+      background-color: skyblue;
+      border: none;
+      font-weight: bold;
+      color: black;
+      text-shadow: 1px 1px 2px black;
+    }
+
+    p { font-weight: bold; font-size: 20px; }
+
+    a {
+      color: black;
+      text-decoration-color: black;
+      text-decoration-thickness: 1px;
+    }
+
+    .flex-container {
+      display: flex;
+      font-size: 20px;
+      margin-top: 100px;
+      width: 100%;
+      height: 50px;
+      flex-wrap: wrap;
+    }
+
+    .navbar {
+      height:50px;
+      color:black;
+      width:180px;
+      text-align: center;
+      padding-top: 10px;
+      text-decoration-line: none;
+    }
+
+    .navbar:hover { background-color: skyblue; text-decoration-line: none; }
+
+    #pwdMessage 
+    { margin-bottom: 15px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <nav class="flex-container">
+    <a class="navbar" href="index.html">Home</a>
+    <a class="navbar" href="webniars.html">Webinars</a>
+    <a class="navbar" href="contactus.html">Contact</a>
+    <a class="navbar" href="aboutus.html">About Us</a>
+    <a class="navbar" href="login.html">Login</a>
+    <a class="navbar" href="signup.html">Signup</a>
+    <a class="navbar" href="profile.html">Profile</a>
+  </nav>
+
+  <div class="container">
+    <h3 style="padding-left: 70px; font-size: 40px;">Signup</h3>
+
+    <form id="signupForm">
+      <label>Name</label>
+      <input type="text" id="name" required placeholder="Your full name"/>
+
+      <label>Email</label>
+      <input type="email" id="email" required placeholder="Email address"/>
+
+      <label>Password</label>
+      <input type="password" id="password" required placeholder="Create password"/>
+      <div id="pwdMessage"></div>
+
+      <label>Confirm Password</label>
+      <input type="password" id="confirmPassword" required placeholder="Confirm password"/>
+
+      <button type="submit">Signup</button>
+      <button type="button" class="google">Continue with Google</button>
+    </form>
+
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+  </div>
+
+  <script>
+    const passwordInput = document.getElementById('password');
+    const confirmInput = document.getElementById('confirmPassword');
+    const pwdMessage = document.getElementById('pwdMessage');
+    const form = document.getElementById('signupForm');
+
+    // Password strength check
+    passwordInput.addEventListener('input', () => {
+      const pwd = passwordInput.value;
+      const regex = /^(?=.*[a-z]{2,})(?=.*[A-Z])(?=.*\d).{8,}$/; 
+      if(!regex.test(pwd)){
+        pwdMessage.innerHTML = `
+          <ul style="color:black;">
+            <li>At least 8 characters</li>
+            <li>At least 2 lowercase letters</li>
+            <li>At least 1 uppercase letter</li>
+            <li>At least 1 number</li>
+          </ul>
+        `;
+      } else {
+        pwdMessage.innerHTML = `<span style="color:green;">Strong password</span>`;
+      }
+    });
+
+    // Form submit validation
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = passwordInput.value;
+      const confirmPwd = confirmInput.value;
+      const regex = /^(?=.*[a-z]{2,})(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+      if(name === "" || email === "" || !regex.test(password)){
+        alert("Please fill all fields correctly and follow password rules.");
+        return;
+      }
+
+      if(password !== confirmPwd){
+        alert("Passwords do not match!");
+        return;
+      }
+
+      alert("Signup Successful!");
+      window.location.href = "profile.html";
+    });
+  </script>
+</body>
+</html>

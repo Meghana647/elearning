@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Learning Platform</title>
+  <style>
+    .navbar {
+      color: black;
+      width: 200px;
+      text-align: center;
+      padding-top: 10px;
+      text-decoration-line: none;
+      font-weight: bold;
+    }
+    .navbar:hover {
+      background-color: paleturquoise;
+      text-decoration-line: none;
+    }
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 20px;
+      width: 100%;
+      height: 50px;
+      margin-top: 20px;
+    }
+    .logo {
+      width: 50px;
+      height: 50px;
+      margin-left: 30px;
+    }
+    a {
+      color: black;
+      text-decoration-color: black;
+      text-decoration-thickness: 1px;
+    }
+
+    .hero-carousel {
+      margin-top:100px;
+      position: relative;
+      height: 70vh;
+      overflow: hidden;
+    }
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+    .slide.active {
+      opacity: 1;
+    }
+    .slide h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    .slide p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    .slide .signup {
+      margin: 0 10px;
+      padding: 12px 25px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .highlights {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 50px 20px;
+      border:2px solid black;
+      border-radius: 10px;
+      background-color: goldenrod;
+      font-size: 18px;
+      font-family: roboto;
+      height: auto;
+      padding: 30px;
+      gap: 30px;
+    }
+
+    .highlights-left {
+      flex: 1;
+      text-align: center;
+    }
+
+    .highlights-left img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 15px;
+    }
+
+    .highlights-right {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .highlights-right h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .highlights-right ul {
+      list-style: none;
+      padding: 0;
+      line-height: 1.8;
+    }
+
+    .highlights-right li::before {
+      content: "\2714";
+      margin-right: 10px;
+      color: green;
+    }
+    .group-container
+    {
+      display: flex;
+      flex-wrap: wrap;
+      background: white;
+    }
+    .group-card
+    {
+      border:2px solid black;
+      margin-left: 20px;
+      width:300px;
+      height:300px;
+      font-size: 25px;
+      text-align: center;
+      border-radius: 20px;
+      background-color: palevioletred;
+    }
+    .group-card:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+}
+
+    .enroll
+    {
+      font-size: 15px;
+      border:2px solid black;
+      border-radius:7px;
+      background-color: aliceblue;
+    }
+    .enroll:hover{
+      cursor: pointer;
+      transform: scaleY(2);
+      transition-property: transform;
+      transition-duration: 1s;
+    }
+    #create
+    {
+     
+      font-size: 15px;
+      border:2px solid black;
+      border-radius:7px;
+      margin-top:50px;
+      margin-left:570px;
+      height:50px;
+      text-align: center;
+      background-color: burlywood;
+      font-weight:bold;
+    }
+    .testimonals
+    {
+      display: flex;
+    }
+    .test {
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px;
+  text-align: center;
+  background: white;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  height:500px;
+  font-size: larger;
+}
+.div-image
+{
+  background-color: rgb(0, 195, 255);
+  height:300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.test img {
+  width: 170px;
+  height: 190px;
+  border-radius: 100px;
+  margin-top: 10px;
+  
+}
+@keyframes cards {
+ from{background-color: white;}
+ to{background-color: rgb(0, 195, 255);}
+}
+.test:hover{
+  animation-name: cards;
+  animation-duration: 5s;
+}
+  </style>
+</head>
+<body>
+
+  <nav class="flex-container">
+    <img class="logo" src="logo.png" alt="Logo">
+    <a class="navbar" href="index.html">Home</a>
+    <a class="navbar" href="webniars.html">Webinars</a>
+    <a class="navbar" href="contactus.html">Contact</a>
+    <a class="navbar" href="aboutus.html">About Us</a>
+    <a class="navbar" href="login.html">Login</a>
+    <a class="navbar" href="signup.html">Signup</a>
+  </nav>
+
+  <section class="hero-carousel">
+    <div class="slide active" style="background-image: url('https://media.istockphoto.com/id/2213050537/photo/online-education-with-smartphone-modern-way-of-learning-remote-access-to-lessons-educational.jpg?s=612x612&w=0&k=20&c=uklz3ACjuXcGo4DyH8NN7Plm1ZnCbq2RQCUd27CsTdg=');">
+      <div class="hero-content">
+        <h1>Connect with Students Worldwide</h1>
+        <p>Join groups, share knowledge, and grow your skills online.</p>
+        <a href="signup.html"><button class="signup">Get Started</button></a>
+      </div>
+    </div>
+    <div class="slide" style="background-image: url('https://media.istockphoto.com/id/1310908620/photo/a-vivid-illustration-of-conceptual-objects-on-catwalks-and-platforms-the-concept-of-online.jpg?s=612x612&w=0&k=20&c=qgcgRH1EneMRSZwnbrQtMotjuAYHCjytwzebD1_McUk=');">
+      <div class="hero-content">
+        <h1>Explore Thousands of Courses</h1>
+        <p>Learn new skills at your own pace with expert instructors.</p>
+        <a href="signup.html"><button class="signup">Join Now</button></a>
+      </div>
+    </div>
+    <div class="slide" style="background-image: url('https://media.istockphoto.com/id/1329983365/photo/online-class-online-education-e-learning-technology-on-mobile-smartphone-training-course-and.jpg?s=612x612&w=0&k=20&c=DzH5PKf5mAKjKyIXsYjjd2r4e4dOsAjPEmB_QTrwDJQ=');">
+      <div class="hero-content">
+        <h1>Collaborate and Share Knowledge</h1>
+        <p>Join student groups and collaborate on projects worldwide.</p>
+        <a href="signup.html"><button class="signup">Get Started</button></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlights">
+    <div class="highlights-left">
+      <img src="f.png" alt="Highlights Illustration">
+    </div>
+    <div class="highlights-right">
+      <h2>Highlights & Benefits</h2>
+      <ul>
+        <li>Join Student Groups – Connect with learners worldwide.</li>
+        <li>Create Your Own Groups – Start your own communities.</li>
+        <li>Explore Courses – Access a variety of topics.</li>
+        <li>Search & Discover – Quickly find courses or groups.</li>
+        <li>Interactive Learning – Engage in discussions and projects.</li>
+        <li>Responsive Design – Learn anytime, anywhere.</li>
+        <li>Easy Navigation – User-friendly interface for all users.</li>
+      </ul>
+    </div>
+  </section>
+   <h3 style="text-align: center;">TRENDING COURSES</h3>
+  <div class="group-container">
+    <div class="group-card">
+      <h5 class="subject">MERN stack development</h5>
+      <p>Founder:Mercy</p>
+      <p>1Cr+ members</p>
+      <button class="enroll">Enroll Now</button>
+    </div>
+    <div class="group-card">
+      <h5 class="subject">Data Structures and Algorithms</h5>
+      <p>Founder:Satvika</p>
+      <p>90L+ members</p>
+      <button class="enroll">Enroll Now</button>
+    </div>
+    <div class="group-card">
+      <h5 class="subject">Signals and Systems</h5>
+      <p>Founder:Daniya</p>
+      <p>75L+ members</p>
+      <button class="enroll">Enroll Now</button>
+    </div>
+    <div class="group-card">
+      <h5 class="subject">Sense Organs</h5>
+      <p>Founder:Sampoorna</p>
+      <p>70L+ members</p>
+      <button class="enroll">Enroll Now</button>
+    </div>
+  </div>
+  <button id="create">Create Your Own Group</button>
+  <h2 style="text-align: center;">What Our Students Say</h2>
+  <div class="testimonals">
+    <div class="test">
+      <div class="div-image">
+      <img class="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIJzJUCo-RpJB0V8hJcNhjHSbddEkvk5hZJw&s">
+      </div>
+      <p>"This platform made learning so easy! The courses are well structured."</p>
+    <h4>- Lakshmi, Student</h4>
+    </div>
+    <div class="test">
+      <div class="div-image">
+      <img class="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRddAFk23TNzUmPdqLu1Jcgi7lfXI1kOrDUSQ&s"></div>
+      <p>"Thanks to these courses, I improved my coding skills and got a job!"</p>
+    <h4>- Rahul, Software Engineer</h4>
+    </div>
+    <div class="test">
+      <div class="div-image">
+      <img class="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpiPoHGKzz5MKxHH4MYU_rcDPt5NOFR25dPQ&s"></div>
+      <p>"The teachers are very supportive and the content is excellent."</p>
+    <h4>- Priya, Data Analyst</h4>
+    </div>
+    <div class="test">
+      <div class="div-image">
+      <img class="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSATeQ7t2sHfynpVD3xu0h7N9aFixZ9o0Om_A&s"></div>
+      <p>"Engaging with various students helps to learn new things"</p>
+    <h4>- Yasaswi, Teacher</h4>
+    </div>
+  </div>
+
+
+  
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if(i === index) 
+        slide.classList.add('active');
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    setInterval(nextSlide, 5000); 
+
+//enroll
+    let enrollButtons=document.getElementsByClassName("enroll")
+    let count=0
+    Array.from(enrollButtons).forEach(button => {
+  button.addEventListener("click", function() {
+    let course = this.parentElement.querySelector(".subject").innerText;
+    button.textContent="Enrolled"
+     count+=1
+    alert("You enrolled in the course: " + course + "\nTotal enrolled: " + count);
+  });
+});
+
+
+//create
+let create=document.getElementById("create")
+create.addEventListener("click",()=>
+{
+  let course=prompt("Enter the group name");
+  alert("You created a group:"+`${course}`)
+}) 
+  </script>
+</body>
+</html>
